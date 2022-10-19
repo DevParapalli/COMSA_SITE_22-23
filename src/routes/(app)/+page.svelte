@@ -54,18 +54,11 @@
 		class="flex flex-wrap px-36 justify-evenly items-center gap-8 bg-gradient-to-b content-gradient pb-5 lg:pb-10 xl:pb-20"
 		id="content"
 	>
-		<div class="mt-10 w-5/6 flex flex-row flex-wrap justify-evenly align-middle gap-10">
-			<h1 id="events" class="text-4xl text-center text-base-content w-screen vimh">EVENTS</h1>
-			{#each events as event}
-			<EventCard name={event.name} desc={event.desc} id={event.id} image={event.image}/>
-			{/each}
-		
-		</div>
+	<div id="about-us" class="mt-10 w-5/6 flex flex-row flex-wrap justify-evenly align-middle">
+		<AboutUs />
+	</div>
 		<div class=" mt-10 w-5/6 flex flex-row flex-wrap justify-evenly align-middle">
 			<div id="faq" class="w-5/6"><Faq data_list={page_1} title={page_1_title} /></div>
-		</div>
-		<div id="about-us" class="mt-10 w-5/6 flex flex-row flex-wrap justify-evenly align-middle">
-			<AboutUs />
 		</div>
 	</div>
 {/await}

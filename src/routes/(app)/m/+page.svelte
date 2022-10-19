@@ -31,7 +31,7 @@
 {:then value}
   <div
     style="--bg-url: url({MobileHero});"
-    class="hero-bg min-h-[calc(100vh-calc(4rem))] flex flex-col lg:flex-row bg-base-100 overflow-x-hidden mt-16 scroll-mt-16"
+    class="hero-bg min-h-screen flex flex-col lg:flex-row bg-base-100 overflow-x-hidden scroll-mt-16"
     id="hero"
   >
     <div id="hero-half" class="mt-10 flex flex-col">
@@ -46,21 +46,14 @@
       <svelte:component this={Cube} />
     </div>
   </div>
-  <div class="flex flex-col justify-center gap-4 items-center content-gradient" id="events">
-    <div class="flex flex-row flex-wrap justify-evenly items-center py-10 gap-6" id="faq">
-      <h1 class="text-4xl text-center text-base-content w-screen vimh">EVENTS</h1>
-      {#each events as event}
-        <EventCard name={event.name} desc={event.desc} id={event.id} image={event.image} />
-      {/each}
-    </div>
-    <div class="" id="faq">
-      <Faq data_list={page_1} title={page_1_title} />
-    </div>
-    <div class="" id="about">
-      <AboutUs />
-    </div>
-    <div class="" id="contact-us" />
+  <div class="mt-16" id="about">
+    <AboutUs />
   </div>
+  <div class="flex flex-col justify-center gap-4 items-center content-gradient mt-10" id="faq">
+    <Faq data_list={page_1} title={page_1_title} />
+  </div>
+
+  <div class="" id="contact-us" />
 {/await}
 
 <style>

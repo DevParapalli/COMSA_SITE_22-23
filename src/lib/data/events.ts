@@ -32,7 +32,10 @@ export const events = [
     date: "2021-09-01",
     players: 1,
   },
-  {
+];
+
+
+/* {
     id: "events-3",
     name: "CoderCut v6.3",
     long_desc: "Longer CoderCut v6.9",
@@ -86,5 +89,4 @@ export const events = [
     icon: "dashicons:code-standards",
     date: "2021-09-01",
     players: 2,
-  },
-];
+  }, */
