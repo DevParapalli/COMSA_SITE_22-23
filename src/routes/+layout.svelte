@@ -2,6 +2,12 @@
   import "../app.postcss";
   import "iconify-icon";
 
+  import {afterNavigate} from '$app/navigation';
+
+  afterNavigate(() => {
+    contentElem.scrollTo(0,0);
+  })
+
   import { Modals, closeModal } from "svelte-modals";
   import { fade } from "svelte/transition";
 
