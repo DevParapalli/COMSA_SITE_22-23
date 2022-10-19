@@ -91,14 +91,14 @@
         <ul class="menu menu-horizontal">
           <!-- Navbar menu content here -->
           <li><a href="/">Home</a></li>
-          <li><a href="#about-us">About</a></li>
+          <li><a href="/#about-us">About</a></li>
           <li><a href="/events/">Events</a></li>
           <li><a href="/gallery">Gallery</a></li>
         </ul>
       </div>
     </div>
     <slot />
-    <footer class="footer p-10 bg-base-200 text-base-content mt-10">
+    <footer class="footer p-10 bg-base-200 text-base-content mt-10 opacity-100 hover:opacity-100 lg:opacity-50 transition-opacity duration-200">
       <div>
         <svg
           width="50"

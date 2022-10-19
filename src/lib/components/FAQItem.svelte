@@ -69,7 +69,7 @@
     display: inline-flex;
     gap: 2rem;
     justify-content: space-between;
-    @apply container w-full xl:max-w-xl text-base p-5 lg:p-9;
+    @apply container w-full xl:max-w-xl text-base p-5 lg:p-7;
   }
 
   .active {
