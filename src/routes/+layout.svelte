@@ -21,16 +21,24 @@
       invalidate("supabase:auth");
     });
 
-	contentElem.addEventListener('scroll', ({ target }) => (contentElemScrollTop = target?.scrollTop));
+    contentElem.addEventListener(
+      "scroll",
+      ({ target }) => (contentElemScrollTop = target?.scrollTop),
+    );
 
     return () => {
       subscription.unsubscribe();
+      if (browser)
+        contentElem.removeEventListener(
+          "scroll",
+          ({ target }) => (contentElemScrollTop = target?.scrollTop),
+        );
     };
   });
 
   import type { LayoutLoad } from "./$types";
   import { getSupabase } from "@supabase/auth-helpers-sveltekit";
-    import { browser } from "$app/environment";
+  import { browser } from "$app/environment";
 
   export const load: LayoutLoad = async (event) => {
     const { session } = await getSupabase(event);
@@ -45,11 +53,15 @@
 <div class="drawer">
   <input id="side-drawer" type="checkbox" class="drawer-toggle" />
   <div
-  bind:this={contentElem}
+    bind:this={contentElem}
     class="drawer-content scroll-smooth snap-y snap-mandatory snap-always scroll-m-16 flex flex-col"
   >
     <!-- Navbar -->
-    <div class="w-full navbar fixed top-0 left-0 {is_transparent ? 'bg-transparent':'bg-base-300'} transition-colors duration-200 z-50 px-6">
+    <div
+      class="w-full navbar fixed top-0 left-0 {is_transparent
+        ? 'bg-transparent'
+        : 'bg-base-300'} transition-colors duration-200 z-50 px-6"
+    >
       <div class="flex-none lg:hidden">
         <label for="side-drawer" class="btn btn-square btn-ghost">
           <svg
@@ -66,7 +78,9 @@
           >
         </label>
       </div>
-      <div class="flex-1 px-2 mx-2 {is_transparent ? 'invisible':'visible'}">Insert Icon Here</div>
+      <div class="flex-1 px-2 mx-2 {is_transparent ? 'invisible' : 'visible'}">
+        Insert Icon Here
+      </div>
       <div class="flex-none hidden lg:block">
         <ul class="menu menu-horizontal">
           <!-- Navbar menu content here -->
@@ -78,7 +92,7 @@
       </div>
     </div>
     <slot />
-    <footer class="footer p-10 bg-base-200 text-base-content">
+    <footer class="footer p-10 bg-base-200 text-base-content mt-10">
       <div>
         <svg
           width="50"
