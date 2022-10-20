@@ -49,15 +49,15 @@
       loading = false;
       return;
     }
-    if (data.players > 1) {
-      team.forEach((member) => {
-        if (member.length < 3) {
-          alert("Please enter a valid team member name.");
-          loading = false;
-          return;
-        }
-      });
-    }
+    // if (data.players > 1) {
+    //   team.forEach((member) => {
+    //     if (member.length < 3) {
+    //       alert("Please enter a valid team member name.");
+    //       loading = false;
+    //       return;
+    //     }
+    //   });
+    // }
     let _data: db_registration = {
       created_at: new Date(),
       name,
@@ -72,10 +72,10 @@
     let { data: __data, error } = await supabaseClient
       .from("registrations")
       .upsert<db_registration>(_data)
-      .select();
+      .select().single();
     // @ts-ignore
-    goto(`/pg/${__data?.id}`);
-    console.log(__data);
+    goto(`/pg/${__data?.id}/pay`);
+    // console.log(__data);
     loading = false;
   }
 </script>

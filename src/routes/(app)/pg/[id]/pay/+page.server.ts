@@ -1,7 +1,6 @@
 import type { PageServerLoad } from "./$types";
 import { events } from "$lib/data/events";
 import { error, json } from "@sveltejs/kit";
-import Razorpay from "razorpay";
 import { supabaseClient } from "$lib/db";
 import { RZP_SECRET } from "$env/static/private";
 import { PUBLIC_RZP_KEY } from "$env/static/public";

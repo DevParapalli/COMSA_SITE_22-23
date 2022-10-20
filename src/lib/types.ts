@@ -12,4 +12,8 @@ export interface db_registration {
     rzp_oid?: string
     rzp_sig?: string
     phone: string
+    cf_id: string
+    cf_token: string
+    cf_status: string
+    rzp_status: string
 }

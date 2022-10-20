@@ -1,7 +1,8 @@
-<script>
+<script lang="ts">
+    import type { PageData } from './$types';
 	import 'iconify-icon';
 
-    
+    export let data: PageData;
 </script>
 
 <div class="pg-container">
@@ -16,20 +17,30 @@
 	</div>
 	<div class="info w-full">
 		<div class="info1 w-1/2">
+			<p>Registration ID</p>
+
 			<p>Amount</p>
 			<p>Name</p>
 			<p>Event:</p>
-			<p>Trans. ID:</p>
+			<p>Transaction ID</p>
 			<p>Contact:</p>
+			{#each Array((data.event?.players ?? 1) - 1) as _, i}
+				<p>Player {i + 1}</p>
+			{/each}
 		</div>
 		<div class="info2 w-1/2">
-			<p>300</p>
-			<p>John Doe</p>
-			<p>CodeClash v6.9</p>
-			<p>ASDFGH6343</p>
+			<p>{data.db.id}</p>
+			<p>₹ {data.db.amount/100}/-</p>
+			<p>{data.db.name}</p>
+			<p>{data.event?.name}</p>
+			<p>{data.db.rzp_pid}</p>
 			<p>+918793150182</p>
+			{#each Array((data.event?.players ?? 1) - 1) as _, i}
+				<p>{data.db.team[i] || "<empty>"}</p>
+			{/each}
 		</div>
 	</div>
+	<div class="my-4 p-2"><span class="text-sm">Please keep a screencapture of this screen or remember the registration ID </span></div>
 </div>
 
 <style lang="postcss">

@@ -4,6 +4,7 @@
   import type { db_registration } from "$lib/types";
   import { onMount } from "svelte";
 import { PUBLIC_RZP_KEY } from "$env/static/public";
+    import { goto } from "$app/navigation";
 
 
   export let data: { db: db_registration; pg: any };
@@ -29,10 +30,15 @@ import { PUBLIC_RZP_KEY } from "$env/static/public";
     },
     "theme": {
         "color": "#3399cc"
+    },
+    "handler": function (e) {
+      // debugger;
+      goto(`/pg/check_status?rzp_pid=${e.razorpay_payment_id}&rzp_oid=${data.pg.id}&rzp_sig=${e.razorpay_signature}`);
     }
 };
     // @ts-ignore
-    const rzp = new Razorpay()
+    const rzp = new Razorpay(options);
+    rzp.open();
   });
 </script>
 
