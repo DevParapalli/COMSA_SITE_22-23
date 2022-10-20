@@ -34,7 +34,6 @@ export const events = [
   },
 ];
 
-
 /* {
     id: "events-3",
     name: "CoderCut v6.3",

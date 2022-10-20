@@ -16,32 +16,36 @@ export const load: PageServerLoad = async (event) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": "Basic "+btoa(PUBLIC_RZP_KEY + ":" + RZP_SECRET)
+      Authorization: "Basic " + btoa(PUBLIC_RZP_KEY + ":" + RZP_SECRET),
     },
     credentials: "include",
     body: JSON.stringify({
       amount: data.amount,
-      currency: 'INR',
+      currency: "INR",
     }),
   });
   const _data = await _req.json();
-  ({data} = await supabaseClient.from('registrations').update({rzp_oid: _data.id}).eq('id', data.id).select().single());
+  ({ data } = await supabaseClient
+    .from("registrations")
+    .update({ rzp_oid: _data.id })
+    .eq("id", data.id)
+    .select()
+    .single());
   if (data && _data) return { db: data, pg: _data };
   else throw error(404, "Registration ID not found");
 };
 
-
 export const sample = {
-  id: 'order_KUnUYh5c6C9Nvb',
-  entity: 'order',
+  id: "order_KUnUYh5c6C9Nvb",
+  entity: "order",
   amount: 10400,
   amount_paid: 0,
   amount_due: 10400,
-  currency: 'INR',
+  currency: "INR",
   receipt: null,
   offer_id: null,
-  status: 'created',
+  status: "created",
   attempts: 0,
   notes: [],
-  created_at: 1666000629
-}
+  created_at: 1666000629,
+};
